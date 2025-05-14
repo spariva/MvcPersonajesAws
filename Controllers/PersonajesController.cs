@@ -30,5 +30,25 @@ namespace MvcPersonajesAws.Controllers
             await this.service.CreatePersonaje(p.Nombre, p.Imagen);
             return RedirectToAction("Index");
         }
+
+        public async Task<IActionResult> Details(int id)
+        {
+            Personaje personaje = await this.service.GetPersonajeAsync(id);
+            return View(personaje);
+        }
+
+        public async Task<IActionResult> Edit(int id)
+        {
+            Personaje personaje = await this.service.GetPersonajeAsync(id);
+            return View(personaje);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Edit(Personaje p)
+        {
+            await this.service.UpdatePersonajeAsync(p.IdPersonaje, p.Nombre, p.Imagen);
+            return RedirectToAction("Index");
+        }
+
     }
 }
