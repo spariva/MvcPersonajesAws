@@ -26,7 +26,7 @@ namespace MvcPersonajesAws.Services
                     return true;
                 };
 
-                using(HttpClient client = new HttpClient())
+                using(HttpClient client = new HttpClient(handler))
                 {
                     string request = "api/personajes";
                     client.DefaultRequestHeaders.Clear();
@@ -55,7 +55,7 @@ namespace MvcPersonajesAws.Services
                     return true;
                 };
 
-                using(HttpClient client = new HttpClient())
+                using(HttpClient client = new HttpClient(handler))
                 {
                     string request = "api/personajes";
                     client.DefaultRequestHeaders.Clear();
